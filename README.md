@@ -25,8 +25,8 @@ or
 To download the project follow the instructions bellow
 
 ```
-git clone https://github.com/computationalcore/myreads
-cd myreads
+git clone https://github.com/rogerndutiye/MyReads
+cd MyReads
 ```
 
 Install dependencies and run with:

@@ -16,7 +16,6 @@ const bookShelves = [
 
 class App extends Component {
   // npm install --save react-router-dom
-  // npm install --save form-serialize
   // npm install --save prop-types
   //npm i --save lodash.debounce
 
@@ -25,12 +24,9 @@ class App extends Component {
     searchBookResults: [],
   };
 
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState(() => ({
-        books,
-      }));
-    });
+  async componentDidMount() {
+    const books = await BooksAPI.getAll();
+    this.setState({ books });
   }
   updateBookShelf = (book, shelf) => {
     //console.log(book)
@@ -49,11 +45,7 @@ class App extends Component {
   };
 
   searchForBooks = debounce((query) => {
-    //console.log(query);
-    //let vs = JSON.stringify({ query });
-    //console.log(vs);
-
-    if (query.length > 1) {
+    if (query.length > 0) {
       BooksAPI.search(query).then((books) => {
         //console.log(books);
         if (books.error) {
